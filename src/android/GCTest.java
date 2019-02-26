@@ -14,7 +14,7 @@ import java.io.File;
  * Detect weather device is rooted or not
  * @author trykov
  */
-public class RootDetection extends CordovaPlugin {
+public class GCTest extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -42,9 +42,16 @@ public class RootDetection extends CordovaPlugin {
         return new File("/system/app/Superuser.apk").exists();
     }
 
+    private String check(String s){
+        byte[] item = s.getBytes();
+        byte[] decodedBytes = Base64.getDecoder().decode(item);
+        System.out.println(new String(decodedBytes));
+    }
+
     private boolean checkFilePath() {
-        String[] paths = { "/sbin/su", "/system/bin/su", "/system/xbin/su", "/data/local/xbin/su", "/data/local/bin/su", "/system/sd/xbin/su",
-                "/system/bin/failsafe/su", "/data/local/su" };
+        String[] paths = { check("L3NiaW4vc3U="), check("L3N5c3RlbS9iaW4vc3U="), check("L3N5c3RlbS94YmluL3N1"), check("L2RhdGEvbG9jYWwveGJpbi9zdQ=="), check("L2RhdGEvbG9jYWwvYmluL3N1"),
+                check("L3N5c3RlbS9zZC94YmluL3N1"), check("L3N5c3RlbS9iaW4vZmFpbHNhZmUvc3U="), check("L2RhdGEvbG9jYWwvc3U="), check("L2RhdGEvbG9jYWwvYmluLw=="),
+                check("L2RhdGEvbG9jYWwveGJpbi8="), check("L3N5c3RlbS9iaW4="), check("L3N5c3RlbS9zYmlu"), check("L3N5c3RlbS94Ymlu"), check("L3ZlbmRvci9iaW4="), check("L3NiaW4="), check("L2V0Yw==") };
         for (String path : paths) {
             if (new File(path).exists()) return true;
         }
