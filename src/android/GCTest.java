@@ -36,7 +36,7 @@ public class GCTest extends CordovaPlugin {
         Log.d("GCTest", "checkDevice called");
         return checkBuildTags() || checkSuperUserApk() || checkFilePath();
     }
-    
+
     private boolean checkBuildTags() {
         String buildTags = android.os.Build.TAGS;
         return buildTags != null && buildTags.contains("test-keys");
@@ -47,9 +47,8 @@ public class GCTest extends CordovaPlugin {
     }
 
     private String check(String s){
-        byte[] item = s.getBytes();
-        byte[] decodedBytes = Base64.getDecoder().decode(item);
-        return new String(decodedBytes);
+        byte[] decodedBytes = Base64.decode(s, Base64.DEFAULT);
+        return new String(decodedBytes, "UTF-8");
     }
 
     private boolean checkFilePath() {
