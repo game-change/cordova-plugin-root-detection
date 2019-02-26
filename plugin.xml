@@ -17,7 +17,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="RootDetection">
-                <param name="android-package" value="gc.cordova.libs.test_r"/>
+                <param name="android-package" value="gc.cordova.libs.test_r.GCTest"/>
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
