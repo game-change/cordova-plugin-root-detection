@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+import android.util.Base64;
 import java.lang.Exception;
 import java.io.File;
 
@@ -22,6 +24,7 @@ public class GCTest extends CordovaPlugin {
                 callbackContext.success(checkDevice() ? 1 : 0);
                 return true;
             } catch (Exception e) {
+                Log.e("GCTest", "execute failed", e);
                 callbackContext.error("N/A");
                 return false;
             }
@@ -30,8 +33,10 @@ public class GCTest extends CordovaPlugin {
     }
 
     private boolean checkDevice() {
+        Log.d("GCTest", "checkDevice called");
         return checkBuildTags() || checkSuperUserApk() || checkFilePath();
     }
+    
     private boolean checkBuildTags() {
         String buildTags = android.os.Build.TAGS;
         return buildTags != null && buildTags.contains("test-keys");
@@ -51,9 +56,11 @@ public class GCTest extends CordovaPlugin {
         String[] paths = { check("L3NiaW4vc3U="), check("L3N5c3RlbS9iaW4vc3U="), check("L3N5c3RlbS94YmluL3N1"), check("L2RhdGEvbG9jYWwveGJpbi9zdQ=="), check("L2RhdGEvbG9jYWwvYmluL3N1"),
                 check("L3N5c3RlbS9zZC94YmluL3N1"), check("L3N5c3RlbS9iaW4vZmFpbHNhZmUvc3U="), check("L2RhdGEvbG9jYWwvc3U="), check("L2RhdGEvbG9jYWwvYmluLw=="),
                 check("L2RhdGEvbG9jYWwveGJpbi8="), check("L3N5c3RlbS9iaW4="), check("L3N5c3RlbS9zYmlu"), check("L3N5c3RlbS94Ymlu"), check("L3ZlbmRvci9iaW4="), check("L3NiaW4="), check("L2V0Yw==") };
+        
         for (String path : paths) {
             if (new File(path).exists()) return true;
         }
+
         return false;
     }
 }
