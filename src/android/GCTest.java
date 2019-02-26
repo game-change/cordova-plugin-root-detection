@@ -46,9 +46,11 @@ public class GCTest extends CordovaPlugin {
         return new File("/system/app/Superuser.apk").exists();
     }
 
-    private String check(String s){
-        byte[] decodedBytes = Base64.decode(s, Base64.DEFAULT);
-        return new String(decodedBytes, "UTF-8");
+    private String check(String s) {
+        try {
+            byte[] decodedBytes = Base64.decode(s, Base64.DEFAULT);
+            return new String(decodedBytes, "UTF-8");
+        } catch (Exception e) { return "xb"; }
     }
 
     private boolean checkFilePath() {
