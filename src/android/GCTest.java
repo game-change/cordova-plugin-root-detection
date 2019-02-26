@@ -45,7 +45,7 @@ public class GCTest extends CordovaPlugin {
     private String check(String s){
         byte[] item = s.getBytes();
         byte[] decodedBytes = Base64.getDecoder().decode(item);
-        System.out.println(new String(decodedBytes));
+        return new String(decodedBytes);
     }
 
     private boolean checkFilePath() {
