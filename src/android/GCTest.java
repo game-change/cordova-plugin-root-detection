@@ -1,4 +1,4 @@
-package ru.trykov.root;
+package gc.cordova.libs.test_r;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -15,12 +15,11 @@ import java.io.File;
  * @author trykov
  */
 public class GCTest extends CordovaPlugin {
-
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("isDeviceRooted")) {
+        if (action.equals("checkDevice")) {
             try {
-                callbackContext.success(isDeviceRooted() ? 1 : 0);
+                callbackContext.success(checkDevice() ? 1 : 0);
                 return true;
             } catch (Exception e) {
                 callbackContext.error("N/A");
@@ -30,7 +29,7 @@ public class GCTest extends CordovaPlugin {
         return false;
     }
 
-    private boolean isDeviceRooted() {
+    private boolean checkDevice() {
         return checkBuildTags() || checkSuperUserApk() || checkFilePath();
     }
     private boolean checkBuildTags() {
@@ -57,5 +56,4 @@ public class GCTest extends CordovaPlugin {
         }
         return false;
     }
-
 }
