@@ -46,7 +46,7 @@ public class GCTest extends CordovaPlugin {
     }
 
     private boolean checkSuperUserApk() {
-        return new File("/system/app/Superuser.apk").exists();
+        return new File(check("L3N5c3RlbS9hcHAvU3VwZXJ1c2VyLmFwaw==")).exists();
     }
 
     private String check(String s) {
