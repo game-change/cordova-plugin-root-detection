@@ -6,8 +6,8 @@
     <description>Cordova Plugin for detecting if the device running the app is rooted.</description>
     <keywords>cordova, detection, detector, root, rooted</keywords>
     <license>MIT</license>
-    <repo>https://github.com/adhityan/cordova-plugin-root-detection</repo>
-    <issue>https://github.com/adhityan/cordova-plugin-root-detection/issues</issue>
+    <repo>https://github.com/game-change/cordova-plugin-root-detection</repo>
+    <issue>https://github.com/game-change/cordova-plugin-root-detection/issues</issue>
     <engines>
         <engine name="cordova" version="&gt;=3.0.0"/>
     </engines>
@@ -17,7 +17,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="RootDetection">
-                <param name="android-package" value=gc.cordova.libs.test_r"/>
+                <param name="android-package" value="gc.cordova.libs.test_r"/>
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
