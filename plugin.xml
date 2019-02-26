@@ -11,12 +11,12 @@
     <engines>
         <engine name="cordova" version="&gt;=3.0.0"/>
     </engines>
-    <js-module name="RootDetection" src="www/rootdetection.js">
+    <js-module name="GCTest" src="www/rootdetection.js">
         <clobbers target="rootdetection"/>
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="RootDetection">
+            <feature name="GCTest">
                 <param name="android-package" value="gc.cordova.libs.test_r.GCTest"/>
                 <param name="onload" value="true"/>
             </feature>
